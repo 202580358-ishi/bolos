@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard - El Nido Haven</title>
+
+    <style>
+        body {
+            margin: 0;
+            background: #FFF3F7;
+            font-family: Georgia, serif;
+            color: #333;
+        }
+
+        header {
+            background: #FFD1E1;
+            padding: 15px 30px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            width: 70px;
+            margin-right: 15px;
+        }
+
+        .name {
+            color: #f1357d;
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .admin {
+            color: #FD821A;
+            font-weight: bold;
+        }
+
+        main {
+            width: 90%;
+            margin: 30px auto;
+        }
+
+        h1, h2 {
+            color: #f1357d;
+        }
+
+        .cards {
+            display: flex;
+            gap: 20px;
+        }
+
+        .card, .section {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            flex: 1;
+        }
+
+        .card strong {
+            color: #f1357d;
+            font-size: 30px;
+        }
+
+        .calendar {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 8px;
+        }
+
+        .day-name {
+            text-align: center;
+            color: #f1357d;
+            font-weight: bold;
+            padding: 10px;
+        }
+
+        #calendarDays {
+            display: contents;
+        }
+
+        .day {
+            padding: 10px;
+            min-height: 40px;
+            border: 1px solid #f3dce5;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .available {
+            color: green;
+            font-weight: bold;
+        }
+
+        .booked {
+            color: red;
+            font-weight: bold;
+        }
+
+        .selected {
+            border: 2px solid #f1357d;
+        }
+
+        .schedule {
+            margin-top: 15px;
+            padding: 15px;
+            background: #FFF3F7;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background: #FFD1E1;
+            color: #f1357d;
+            padding: 10px;
+        }
+
+        td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        button {
+            padding: 7px 12px;
+            border: 0;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        footer {
+            background: #ff9c5a;
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="brand">
+        <img src="images/logo.png" class="logo">
+
+        <div>
+            <div class="name">EL NIDO HAVEN</div>
+            <div class="admin">ADMIN DASHBOARD</div>
+        </div>
+    </div>
+</header>
+
+<main>
+
+    <h1>Dashboard</h1>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>Total Rooms</h3>
+            <strong>3</strong>
+            <p>Registered rooms</p>
+        </div>
+
+        <div class="card">
+            <h3>Available</h3>
+            <strong>1</strong>
+            <p>Vacant room</p>
+        </div>
+
+        <div class="card">
+            <h3>Booked</h3>
+            <strong>2</strong>
+            <p>Currently booked</p>
+        </div>
+
+    </div>
+
+    <div class="section">
+
+        <h2 id="monthYear"></h2>
+
+        <button onclick="previousMonth()">Previous</button>
+        <button onclick="nextMonth()">Next</button>
+
+        <br><br>
+
+        <div class="calendar">
+
+            <div class="day-name">Sun</div>
+            <div class="day-name">Mon</div>
+            <div class="day-name">Tue</div>
+            <div class="day-name">Wed</div>
+            <div class="day-name">Thu</div>
+            <div class="day-name">Fri</div>
+            <div class="day-name">Sat</div>
+
+            <div id="calendarDays"></div>
+
+        </div>
+
+        <div class="schedule">
+
+            <h3 id="selectedDate">Select a date</h3>
+
+            <div id="selectedBookings">
+                Click a date to view the booking.
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="section">
+
+        <h2>Recent Bookings</h2>
+
+        <table>
+
+            <tr>
+                <th>Guest</th>
+                <th>Room</th>
+                <th>Check-in</th>
+                <th>Check-out</th>
+                <th>Payment</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+
+            <tr>
+                <td>Angela Reynoso</td>
+                <td>Tropical Garden Deluxe</td>
+                <td>Sept. 15</td>
+                <td>Sept. 18</td>
+                <td>Paid (Card)</td>
+                <td class="booked">Booked</td>
+                <td>
+                    <button onclick="confirmBooking(this)">Confirm</button>
+                    <button onclick="cancelBooking(this)">Cancel</button>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Lovely Caguiwa</td>
+                <td>VIP Beachfront Suite</td>
+                <td>Sept. 20</td>
+                <td>Sept. 23</td>
+                <td>Paid (GCash)</td>
+                <td class="booked">Booked</td>
+                <td>
+                    <button onclick="confirmBooking(this)">Confirm</button>
+                    <button onclick="cancelBooking(this)">Cancel</button>
+                </td>
+            </tr>
+
+        </table>
+
+        <p>
+            <strong>Cozy Garden Standard:</strong>
+            <span class="available">Vacant</span>
+        </p>
+
+    </div>
+
+</main>
+
+<footer>
+    <strong>EL NIDO HAVEN</strong>
+    <p>Administrator Panel</p>
+</footer>
+
+<script>
+
+var bookings = [
+    ["Tropical Garden Deluxe", "2026-09-15", "2026-09-18", "Angela Reynoso"],
+    ["VIP Beachfront Suite", "2026-09-20", "2026-09-23", "Lovely Caguiwa"]
+];
+
+var date = new Date(2026, 8, 13);
+
+function showCalendar() {
+
+    var year = date.getFullYear();
+    var month = date.getMonth();
+
+    document.getElementById("monthYear").innerHTML =
+        (month + 1) + " / " + year;
+
+    var calendar = document.getElementById("calendarDays");
+
+    calendar.innerHTML = "";
+
+    var firstDay = new Date(year, month, 1).getDay();
+    var totalDays = new Date(year, month + 1, 0).getDate();
+
+    for (var i = 0; i < firstDay; i++) {
+        calendar.innerHTML += "<div></div>";
+    }
+
+    for (var day = 1; day <= totalDays; day++) {
+
+        var monthNumber = month + 1;
+
+        if (monthNumber < 10) {
+            monthNumber = "0" + monthNumber;
+        }
+
+        var dayNumber = day;
+
+        if (dayNumber < 10) {
+            dayNumber = "0" + dayNumber;
+        }
+
+        var today = year + "-" + monthNumber + "-" + dayNumber;
+
+        var box = document.createElement("div");
+
+        box.className = "day";
+
+        var status = "Vacant";
+
+        for (var i = 0; i < bookings.length; i++) {
+
+            if (today >= bookings[i][1] && today <= bookings[i][2]) {
+                status = "Booked";
+            }
+
+        }
+
+        if (status == "Booked") {
+            box.innerHTML =
+                day + "<br><span class='booked'>Booked</span>";
+        } else {
+            box.innerHTML =
+                day + "<br><span class='available'>Vacant</span>";
+        }
+
+        box.setAttribute("data-date", today);
+
+        box.onclick = function() {
+            showSchedule(
+                this.getAttribute("data-date"),
+                this
+            );
+        };
+
+        calendar.appendChild(box);
+    }
+}
+
+function showSchedule(selected, box) {
+
+    box.className = "day selected";
+
+    document.getElementById("selectedDate").innerHTML = selected;
+
+    var text = "";
+
+    for (var i = 0; i < bookings.length; i++) {
+
+        if (selected >= bookings[i][1] &&
+            selected <= bookings[i][2]) {
+
+            text +=
+                "<p><strong>" + bookings[i][0] +
+                "</strong><br>" +
+                "Guest: " + bookings[i][3] +
+                "<br>Booked</p>";
+        }
+    }
+
+    if (text == "") {
+        text =
+            "<p class='available'>" +
+            "No bookings. Room is available." +
+            "</p>";
+    }
+
+    document.getElementById("selectedBookings").innerHTML = text;
+}
+
+function previousMonth() {
+    date.setMonth(date.getMonth() - 1);
+    showCalendar();
+}
+
+function nextMonth() {
+    date.setMonth(date.getMonth() + 1);
+    showCalendar();
+}
+
+function confirmBooking(button) {
+
+    var row = button.parentElement.parentElement;
+
+    row.cells[5].innerHTML = "Confirmed";
+    row.cells[5].className = "available";
+
+    button.style.display = "none";
+}
+
+function cancelBooking(button) {
+
+    var row = button.parentElement.parentElement;
+
+    row.cells[5].innerHTML = "Cancelled";
+    row.cells[5].className = "booked";
+
+    button.parentElement.innerHTML = "Cancelled";
+}
+
+showCalendar();
+
+</script>
+
+</body>
+</html>
