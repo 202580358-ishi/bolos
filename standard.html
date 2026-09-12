@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>El Nido Haven</title>
     <link rel="stylesheet" href="style.css">
@@ -9,7 +10,7 @@
 
 <header>
     <div class="logo-container">
-        <img class="logo" src="logo.png" alt="El Nido Haven Logo">
+        <img class="logo" src="images/logo.png" alt="El Nido Haven Logo">
         <div class="name">EL NIDO HAVEN ❀</div>
     </div>
 
@@ -22,6 +23,7 @@
 </header>
 
 <section id="standard-details" class="room-details-section">
+
     <div class="details">
 
         <h2>Standard Room</h2>
@@ -29,12 +31,14 @@
         <h3>Room Information</h3>
 
         <div class="room-details">
-    <div class="room-detail-item"><strong>Room Type:</strong> Standard Room</div>
-    <div class="room-detail-item"><strong>Maximum Capacity:</strong> 1-2 PAX</div>
-    <div class="room-detail-item"><strong>Bed:</strong> Double bed</div>
-    <div class="room-detail-item"><strong>Amenities:</strong> Air conditioning, pool access, flat-screen TV, and a comfortable stay.</div>
-    <div class="room-detail-item"><strong>Price:</strong> ₱8,000 / night</div>
-</div>
+
+            <div class="room-detail-item"><strong>Room Type:</strong> Standard Room</div>
+            <div class="room-detail-item"><strong>Maximum Capacity:</strong> 1-2 PAX</div>
+            <div class="room-detail-item"><strong>Bed:</strong> Double bed</div>
+            <div class="room-detail-item"><strong>Amenities:</strong> Air conditioning, pool access, flat-screen TV, and a comfortable stay.</div>
+            <div class="room-detail-item"><strong>Price:</strong> ₱8,000 / night</div>
+
+        </div>
 
         <p class="room-description">
             A simple and comfortable room with a cozy bed, relaxing interiors, and a peaceful beach and garden view.
@@ -42,19 +46,17 @@
 
         <h3>Room Images</h3>
 
-       <div class="room-images">
-
-       <img src="room3.jpg" alt="Standard Room" onclick="zoomImage(this)">
-       <img src="cr2.jpg" alt="CR Image"onclick="zoomImage(this)">
-       <img src="beachview.png" alt="Beach View Image"onclick="zoomImage(this)">
-       <img src="poolgardenview.png" alt="Pool and Garden View Image"onclick="zoomImage(this)">
-       
-
-      </div>
+        <div class="room-images">
+            <img src="images/room3.jpg" alt="Standard Room" onclick="zoomImage(this)">
+            <img src="images/cr2.jpg" alt="CR Image" onclick="zoomImage(this)">
+            <img src="images/beachview.png" alt="Beach View Image" onclick="zoomImage(this)">
+            <img src="images/poolgardenview.png" alt="Pool and Garden View Image" onclick="zoomImage(this)">
+        </div>
 
         <h3>Booking Schedule</h3>
 
         <div class="booking">
+
             <p>
                 <strong>Check-in:</strong>
                 <input type="date">
@@ -64,9 +66,8 @@
                 <strong>Check-out:</strong>
                 <input type="date">
             </p>
-        </div>
 
-    
+        </div>
 
         <a href="sign in.html" class="book-button">Book Now</a>
 
@@ -75,6 +76,7 @@
         <a href="home.html" class="back-button">Back to Rooms</a>
 
     </div>
+
 </section>
 
 <footer>
@@ -87,6 +89,7 @@
 </div>
 
 <script>
+
 function zoomImage(image) {
     document.getElementById("zoomed-image").src = image.src;
     document.getElementById("image-popup").style.display = "flex";
@@ -95,8 +98,8 @@ function zoomImage(image) {
 function closeImage() {
     document.getElementById("image-popup").style.display = "none";
 }
-</script>
 
+</script>
 
 </body>
 </html>
