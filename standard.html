@@ -30,7 +30,7 @@
 
         <div class="room-details">
     <div class="room-detail-item"><strong>Room Type:</strong> Standard Room</div>
-    <div class="room-detail-item"><strong>Maximum Capacity:</strong> 2 PAX</div>
+    <div class="room-detail-item"><strong>Maximum Capacity:</strong> 1-2 PAX</div>
     <div class="room-detail-item"><strong>Bed:</strong> Double bed</div>
     <div class="room-detail-item"><strong>Amenities:</strong> Air conditioning, pool access, flat-screen TV, and a comfortable stay.</div>
     <div class="room-detail-item"><strong>Price:</strong> ₱5,000 / night</div>
@@ -44,11 +44,11 @@
 
        <div class="room-images">
 
-       <img src="4paxrm.png" alt="VIP Suite" onclick="zoomImage(this)">
-       <img src="cr2.jpg" alt="CR Image" onclick="zoomImage(this)">
-       <img src="poolbfast.png" alt="Pool Breakfast Image" onclick="zoomImage(this)">
-       <img src="beachview.png" alt="Beach View Image" onclick="zoomImage(this)">
-       <img src="poolgardenview.png" alt="Pool and Garden View Image" onclick="zoomImage(this)">
+       <img src="room3.jpg" alt="Standard Room" onclick="zoomImage(this)">
+       <img src="cr2.jpg" alt="CR Image"onclick="zoomImage(this)">
+       <img src="beachview.png" alt="Beach View Image"onclick="zoomImage(this)">
+       <img src="poolgardenview.png" alt="Pool and Garden View Image"onclick="zoomImage(this)">
+       
 
       </div>
 
@@ -67,8 +67,7 @@
         </div>
 
         <h3>Mode of Payment</h3> 
-      
-
+    
 
         <button class="payment-button" onclick="showPayment('deluxe-payment')">
             Select Mode of Payment
@@ -87,14 +86,14 @@
     </div>
 </section>
 
-<div id="image-popup" onclick="closeImage()">
-    <img id="zoomed-image" src="" alt="Zoomed Room Image">
-</div>
-
 <footer>
     <p>EL NIDO HAVEN</p>
     <p>Your tropical getaway!</p>
 </footer>
+
+<div id="image-popup" class="image-popup" onclick="closeImage()">
+    <img id="zoomed-image" src="" alt="Zoomed Room Image">
+</div>
 
 <script>
 function zoomImage(image) {
@@ -106,8 +105,6 @@ function closeImage() {
     document.getElementById("image-popup").style.display = "none";
 }
 </script>
-
-
 
 
 </body>
