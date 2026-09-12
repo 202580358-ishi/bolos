@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>El Nido Haven</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: #FFF3F7;
+        }
+
+        header {
+            background-color: #FFD1E1;
+            padding: 10px 25px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            width: 150px;
+            height: 150px;
+            margin-right: 10px;
+        }
+
+        .name {
+            color: #f1357d;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        nav a {
+            color: #FD821A;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: bold;
+        }
+
+        #home {
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        #home h1 {
+            color: #f1357d;
+            font-size: 40px;
+        }
+
+        #home h1 span {
+            color: #FF8C42;
+        }
+
+        #home p {
+            font-size: 18px;
+        }
+
+        #rooms {
+            padding: 30px 20px 50px;
+            text-align: center;
+            background-color: #FFF3F7;
+            color: #f1357d;
+        }
+
+        #rooms h2 {
+            color: #f1357d;
+            font-size: 28px;
+        }
+
+        .room-card {
+            width: 320px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(241, 53, 125, 0.2);
+            cursor: pointer;
+        }
+
+        .room-card img {
+            width: 100%;
+            height: 190px;
+        }
+
+        .room-info {
+            padding: 18px;
+        }
+
+        .room-info p {
+            color: #FF8C42;
+            font-size: 15px;
+            line-height: 1.5;
+        }
+
+        .price {
+            color: #FD821A;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .book-button {
+            background-color: #f1357d;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 20px;
+            font-weight: bold;
+            margin-top: 5px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        #room-details {
+            display: none;
+            padding: 30px 20px 50px;
+            text-align: center;
+            color: #f1357d;
+        }
+
+        .details {
+            width: 80%;
+            max-width: 700px;
+            margin: auto;
+            background-color: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(241, 53, 125, 0.2);
+        }
+
+        .details h2,
+        .details h3 {
+            color: #f1357d;
+        }
+
+        .details p {
+            color: #FF8C42;
+            line-height: 1.5;
+        }
+
+        .room-images img {
+            width: 180px;
+            height: 130px;
+            object-fit: cover;
+            margin: 5px;
+            border-radius: 10px;
+        }
+
+        .booking input {
+            padding: 8px;
+            margin: 5px;
+            border: 1px solid #FFD1E1;
+            border-radius: 8px;
+        }
+
+        .payment-button {
+            width: 100%;
+            padding: 12px;
+            background-color: white;
+            border: 1px solid #FFD1E1;
+            border-radius: 8px;
+            color: #f1357d;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .payment-options {
+      
+            padding: 10px;
+            color: #FF8C42;
+        }
+
+        .back-button {
+            background-color: #FF8C42;
+            color: white;
+            padding: 10px 22px;
+            border: none;
+            border-radius: 20px;
+            font-weight: bold;
+            margin-top: 15px;
+            cursor: pointer;
+        }
+
+        footer {
+            background-color: #ff9c5a;
+            padding: 50px;
+            color: #f1357d;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo-container">
+        <img class="logo" src="logo.png" alt="El Nido Haven Logo">
+        <div class="name">EL NIDO HAVEN ❀</div>
+    </div>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="register.html">Register</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
+
+<section id="home">
+    <h1>
+        ⋆.˚𓇼 𖦹⋆Welcome to
+        <span>El Nido Haven!⋆⋅ ଳ ‧₊˚ ⋅</span>
+    </h1>
+</section>
+
+<section id="rooms">
+    <h2>⋆｡°✩ Rooms ✩°｡⋆</h2>
+
+    <div class="room-card" onclick="showRoom()">
+        <img src="IMG_6205.jpeg" alt="Tropical Garden Deluxe">
+
+        <div class="room-info">
+            <h3>Tropical Garden Deluxe</h3>
+
+            <p>
+                A cozy tropical room with a comfortable king-size bed,
+                relaxing interiors, and a beautiful garden view.
+            </p>
+
+            <p class="price">₱4,500 / night</p>
+
+            <a href="register.html" class="book-button" onclick="event.stopPropagation()">
+                Book Now
+            </a>
+        </div>
+    </div>
+</section>
+
+<section id="room-details">
+    <div class="details">
+
+        <h2>Tropical Garden Deluxe</h2>
+
+        <h3>Room Information</h3>
+
+     
+    <strong>Room Type:</strong> Deluxe<br>
+    <strong>Maximum Capacity:</strong> 2 PAX<br>
+    <strong>Bed:</strong> King-size bed<br>
+    <strong>View:</strong> Garden view<br>
+    <strong>Price:</strong> ₱4,500 / night
+</p>
+
+<p>
+    A cozy tropical room with a comfortable king-size bed,
+    relaxing interiors, and a beautiful garden view.
+</p>
+</p>
+            A cozy tropical room with a comfortable king-size bed,
+            relaxing interiors, and a beautiful garden view.
+        </p>
+
+        <h3>Room Images</h3>
+
+        <div class="room-images">
+            <img src="IMG_6205.jpeg" alt="Tropical Garden Deluxe">
+            <img src="C:\Users\freshelle\Downloads\download (2).jpg" alt="Room Image"> 
+            
+        </div>
+
+        <h3>Booking Schedule</h3>
+
+        <div class="booking">
+            <p>
+                <strong>Check-in:</strong>
+                <input type="date">
+            </p>
+
+            <p>
+                <strong>Check-out:</strong>
+                <input type="date">
+            </p>
+        </div>
+
+        <h3>Mode of Payment</h3>
+
+        <button class="payment-button" onclick="showPayment()">
+            Select Mode of Payment
+        </button>
+
+        <div id="payment-options" class="payment-options">
+          
+        </div>
+
+        <br>
+
+        <a href="register.html" class="book-button">
+            Book Now
+        </a>
+
+        <br>
+
+        <button class="back-button" onclick="hideRoom()">
+            Back to Rooms
+        </button>
+
+    </div>
+</section>
+
+<footer>
+    <p>EL NIDO HAVEN</p>
+    <p>Your tropical getaway!</p>
+</footer>
+
+<script>
+    function showRoom() {
+        document.getElementById("rooms").style.display = "none";
+        document.getElementById("room-details").style.display = "block";
+    }
+
+    function hideRoom() {
+        document.getElementById("room-details").style.display = "none";
+        document.getElementById("rooms").style.display = "block";
+    }
+
+    function showPayment() {
+        document.getElementById("payment-options").style.display = "block";
+    }
+</script>
+
+</body>
+</html>
