@@ -6,6 +6,7 @@
         body {
             margin: 0;
             background-color: #FFF3F7;
+            font-family: Georgia, serif;
         }
 
         header {
@@ -48,6 +49,7 @@
         #home h1 {
             color: #f1357d;
             font-size: 40px;
+            line-height: 1.3;
         }
 
         #home h1 span {
@@ -68,11 +70,18 @@
         #rooms h2 {
             color: #f1357d;
             font-size: 28px;
+            margin-bottom: 30px;
+        }
+
+        .room-container {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
         }
 
         .room-card {
             width: 320px;
-            margin: 0 auto;
             background-color: white;
             border-radius: 15px;
             overflow: hidden;
@@ -83,6 +92,7 @@
         .room-card img {
             width: 100%;
             height: 190px;
+            object-fit: cover;
         }
 
         .room-info {
@@ -112,44 +122,95 @@
             display: inline-block;
         }
 
-        #room-details {
+        .room-details-section {
             display: none;
-            padding: 30px 20px 50px;
+            padding: 40px 20px 60px;
             text-align: center;
             color: #f1357d;
         }
 
         .details {
             width: 80%;
-            max-width: 700px;
+            max-width: 800px;
             margin: auto;
             background-color: white;
-            padding: 25px;
-            border-radius: 15px;
+            padding: 40px;
+            border-radius: 20px;
             box-shadow: 0 4px 15px rgba(241, 53, 125, 0.2);
         }
 
-        .details h2,
+        .details h2 {
+            color: #f1357d;
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+
         .details h3 {
+            color: #f1357d;
+            font-size: 21px;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+
+        .room-details {
+            max-width: 700px;
+            margin: 0 auto 25px;
+            text-align: left;
+            color: #555;
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        .room-detail-row {
+            display: grid;
+            grid-template-columns: 180px 1fr;
+            gap: 20px;
+            padding: 10px 0;
+            border-bottom: 1px solid #f8dce7;
+        }
+
+        .room-detail-row strong {
             color: #f1357d;
         }
 
-        .details p {
-            color: #FF8C42;
-            line-height: 1.5;
+        .room-detail-row span {
+            color: #666;
+        }
+
+        .room-description {
+            color: #777;
+            line-height: 1.8;
+            font-size: 16px;
+            margin: 30px auto;
+            max-width: 700px;
+        }
+
+        .room-images {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
         }
 
         .room-images img {
-            width: 180px;
-            height: 130px;
+            width: 250px;
+            height: 170px;
             object-fit: cover;
-            margin: 5px;
-            border-radius: 10px;
+            border-radius: 12px;
+            cursor: pointer;
+        }
+
+        .booking {
+            color: #666;
+        }
+
+        .booking p {
+            margin: 15px 0;
         }
 
         .booking input {
             padding: 8px;
-            margin: 5px;
+            margin-left: 10px;
             border: 1px solid #FFD1E1;
             border-radius: 8px;
         }
@@ -166,7 +227,6 @@
         }
 
         .payment-options {
-      
             padding: 10px;
             color: #FF8C42;
         }
@@ -182,9 +242,28 @@
             cursor: pointer;
         }
 
+        #image-popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        #zoomed-image {
+            max-width: 85%;
+            max-height: 85%;
+            border-radius: 15px;
+        }
+
         footer {
             background-color: #ff9c5a;
-            padding: 50px;
+            padding: 40px;
             color: #f1357d;
             text-align: center;
         }
@@ -200,7 +279,7 @@
     </div>
 
     <nav>
-        <a href="index.html">Home</a>
+        <a href="home.html">Home</a>
         <a href="about.html">About</a>
         <a href="register.html">Register</a>
         <a href="contact.html">Contact</a>
@@ -208,65 +287,107 @@
 </header>
 
 <section id="home">
-    <h1>
-        ⋆.˚𓇼 𖦹⋆Welcome to
-        <span>El Nido Haven!⋆⋅ ଳ ‧₊˚ ⋅</span>
-    </h1>
+    <h1>⋆.˚𓇼 𖦹⋆ Welcome to <span>El Nido Haven! ⋆⋅ ଳ ‧₊˚ ⋅</span></h1>
 </section>
 
 <section id="rooms">
     <h2>⋆｡°✩ Rooms ✩°｡⋆</h2>
 
-    <div class="room-card" onclick="showRoom()">
-        <img src="IMG_6205.jpeg" alt="Tropical Garden Deluxe">
+    <div class="room-container">
 
-        <div class="room-info">
-            <h3>Tropical Garden Deluxe</h3>
+        <div class="room-card" onclick="showRoom('deluxe')">
+            <img src="IMG_6205.jpeg" alt="Tropical Garden Deluxe">
 
-            <p>
-                A cozy tropical room with a comfortable king-size bed,
-                relaxing interiors, and a beautiful garden view.
-            </p>
+            <div class="room-info">
+                <h3>Tropical Garden Deluxe</h3>
+                <p>A cozy tropical room with a comfortable king-size bed, relaxing interiors, and a beautiful garden view.</p>
+                <p class="price">₱4,500 / night</p>
 
-            <p class="price">₱4,500 / night</p>
-
-            <a href="register.html" class="book-button" onclick="event.stopPropagation()">
-                Book Now
-            </a>
+                <a href="register.html" class="book-button" onclick="event.stopPropagation()">
+                    Book Now
+                </a>
+            </div>
         </div>
+
+        <div class="room-card" onclick="showRoom('vip')">
+            <!-- ADD VIP ROOM PICTURE HERE -->
+            <img src="viproom.png" alt="VIP Beachfront Suite">
+
+            <div class="room-info">
+                <h3>VIP Beachfront Suite</h3>
+                <p>A spacious and elegant suite with a king-size bed, private balcony, and beautiful beachfront view.</p>
+                <p class="price">₱12,000 / night</p>
+
+                <a href="register.html" class="book-button" onclick="event.stopPropagation()">
+                    Book Now
+                </a>
+            </div>
+        </div>
+
+        <div class="room-card" onclick="showRoom('standard')">
+            <!-- ADD REGULAR ROOM PICTURE HERE -->
+            <img src="standardroom.png" alt="Cozy Garden Standard">
+
+            <div class="room-info">
+                <h3>Cozy Garden Standard</h3>
+                <p>A simple and comfortable room with a cozy bed, relaxing interiors, and a peaceful garden view.</p>
+                <p class="price">₱3,000 / night</p>
+
+                <a href="register.html" class="book-button" onclick="event.stopPropagation()">
+                    Book Now
+                </a>
+            </div>
+        </div>
+
     </div>
 </section>
 
-<section id="room-details">
+<section id="deluxe-details" class="room-details-section">
     <div class="details">
 
         <h2>Tropical Garden Deluxe</h2>
 
         <h3>Room Information</h3>
 
-     
-    <strong>Room Type:</strong> Deluxe<br>
-    <strong>Maximum Capacity:</strong> 2 PAX<br>
-    <strong>Bed:</strong> King-size bed<br>
-    <strong>View:</strong> Garden view<br>
-    <strong>Price:</strong> ₱4,500 / night
-</p>
+        <div class="room-details">
+            <div class="room-detail-row">
+                <strong>Room Type</strong>
+                <span>Deluxe</span>
+            </div>
 
-<p>
-    A cozy tropical room with a comfortable king-size bed,
-    relaxing interiors, and a beautiful garden view.
-</p>
-</p>
-            A cozy tropical room with a comfortable king-size bed,
-            relaxing interiors, and a beautiful garden view.
+            <div class="room-detail-row">
+                <strong>Maximum Capacity</strong>
+                <span>2 PAX</span>
+            </div>
+
+            <div class="room-detail-row">
+                <strong>Bed</strong>
+                <span>King-size bed</span>
+            </div>
+
+            <div class="room-detail-row">
+                <strong>Amenities</strong>
+                <span>Air conditioning, flat-screen TV, mini-bar, balcony, beach and garden view, pool access and pool breakfast.</span>
+            </div>
+
+            <div class="room-detail-row">
+                <strong>Price</strong>
+                <span>₱10,000 / night</span>
+            </div>
+        </div>
+
+        <p class="room-description">
+            A cozy tropical room with a comfortable king-size bed, relaxing interiors, and a beautiful garden view.
         </p>
 
         <h3>Room Images</h3>
 
         <div class="room-images">
-            <img src="IMG_6205.jpeg" alt="Tropical Garden Deluxe">
-            <img src="C:\Users\freshelle\Downloads\download (2).jpg" alt="Room Image"> 
-            
+            <img src="IMG_6205.jpeg" alt="Tropical Garden Deluxe" onclick="zoomImage(this)">
+            <img src="cr 1.jpg" alt="CR Image" onclick="zoomImage(this)">
+            <img src="poolbfast.png" alt="Pool Breakfast Image" onclick="zoomImage(this)">
+            <img src="beachview.png" alt="Beach View Image" onclick="zoomImage(this)">
+            <img src="poolgardenview.png" alt="Pool and Garden View Image" onclick="zoomImage(this)">
         </div>
 
         <h3>Booking Schedule</h3>
@@ -285,19 +406,15 @@
 
         <h3>Mode of Payment</h3>
 
-        <button class="payment-button" onclick="showPayment()">
+        <button class="payment-button" onclick="showPayment('deluxe-payment')">
             Select Mode of Payment
         </button>
 
-        <div id="payment-options" class="payment-options">
-          
-        </div>
+        <div id="deluxe-payment" class="payment-options"></div>
 
         <br>
 
-        <a href="register.html" class="book-button">
-            Book Now
-        </a>
+        <a href="register.html" class="book-button">Book Now</a>
 
         <br>
 
@@ -308,24 +425,217 @@
     </div>
 </section>
 
+<section id="vip-details" class="room-details-section">
+    <div class="details">
+
+        <h2>VIP Beachfront Suite</h2>
+
+        <h3>Room Information</h3>
+
+        <div class="room-details">
+            <div class="room-detail-row">
+                <strong>Room Type</strong>
+                <span>VIP Suite</span>
+            </div>
+
+            <div class="room-detail-row">
+                <strong>Maximum Capacity</strong>
+                <span>4 PAX</span>
+            </div>
+
+            <div class="room-detail-row">
+                <strong>Bed</strong>
+                <span>King-size bed</span>
+            </div>
+
+            <div class="room-detail-row">
+                <strong>Amenities</strong>
+                <span>Air conditioning, flat-screen TV, mini-bar, private balcony, beachfront view, pool access, breakfast, and private seating area.</span>
+            </div>
+
+            <div class="room-detail-row">
+                <strong>Price</strong>
+                <span>₱12,000 / night</span>
+            </div>
+        </div>
+
+        <p class="room-description">
+            A spacious VIP suite designed for a relaxing tropical stay, featuring a beautiful beachfront view and comfortable interiors.
+        </p>
+
+        <h3>Room Images</h3>
+
+        <div class="room-images">
+            <!-- ADD VIP ROOM PICTURES HERE -->
+            <img src="viproom.png" alt="VIP Beachfront Suite" onclick="zoomImage(this)">
+            <img src="viproom2.png" alt="VIP Room Interior" onclick="zoomImage(this)">
+            <img src="vipview.png" alt="VIP Beach View" onclick="zoomImage(this)">
+        </div>
+
+        <h3>Booking Schedule</h3>
+
+        <div class="booking">
+            <p>
+                <strong>Check-in:</strong>
+                <input type="date">
+            </p>
+
+            <p>
+                <strong>Check-out:</strong>
+                <input type="date">
+            </p>
+        </div>
+
+        <h3>Mode of Payment</h3>
+
+        <button class="payment-button" onclick="showPayment('vip-payment')">
+            Select Mode of Payment
+        </button>
+
+        <div id="vip-payment" class="payment-options"></div>
+
+        <br>
+
+        <a href="register.html" class="book-button">Book Now</a>
+
+        <br>
+
+        <button class="back-button" onclick="hideRoom()">
+            Back to Rooms
+        </button>
+
+    </div>
+</section>
+
+<section id="standard-details" class="room-details-section">
+    <div class="details">
+
+        <h2>Cozy Garden Standard</h2>
+
+        <h3>Room Information</h3>
+
+        <div class="room-details">
+            <div class="room-detail-row">
+                <strong>Room Type</strong>
+                <span>Standard</span>
+            </div>
+
+            <div class="room-detail-row">
+                <strong>Maximum Capacity</strong>
+                <span>2 PAX</span>
+            </div>
+
+            <div class="room-detail-row">
+                <strong>Bed</strong>
+                <span>Queen-size bed</span>
+            </div>
+
+            <div class="room-detail-row">
+                <strong>Amenities</strong>
+                <span>Air conditioning, flat-screen TV, private bathroom, garden view, Wi-Fi, and breakfast.</span>
+            </div>
+
+            <div class="room-detail-row">
+                <strong>Price</strong>
+                <span>₱3,000 / night</span>
+            </div>
+        </div>
+
+        <p class="room-description">
+            A comfortable and peaceful standard room with simple interiors, a cozy bed, and a relaxing garden view.
+        </p>
+
+        <h3>Room Images</h3>
+
+        <div class="room-images">
+            <!-- ADD REGULAR ROOM PICTURES HERE -->
+            <img src="room2.png" alt="room2" onclick="zoomImage(this)">
+            <img src="standardroom2.png" alt="Standard Room Interior" onclick="zoomImage(this)">
+            <img src="standardview.png" alt="Standard Garden View" onclick="zoomImage(this)">
+        </div>
+
+        <h3>Booking Schedule</h3>
+
+        <div class="booking">
+            <p>
+                <strong>Check-in:</strong>
+                <input type="date">
+            </p>
+
+            <p>
+                <strong>Check-out:</strong>
+                <input type="date">
+            </p>
+        </div>
+
+        <h3>Mode of Payment</h3>
+
+        <button class="payment-button" onclick="showPayment('standard-payment')">
+            Select Mode of Payment
+        </button>
+
+        <div id="standard-payment" class="payment-options"></div>
+
+        <br>
+
+        <a href="register.html" class="book-button">Book Now</a>
+
+        <br>
+
+        <button class="back-button" onclick="hideRoom()">
+            Back to Rooms
+        </button>
+
+    </div>
+</section>
+
+<div id="image-popup" onclick="closeImage()">
+    <img id="zoomed-image" src="" alt="Zoomed Room Image">
+</div>
+
 <footer>
     <p>EL NIDO HAVEN</p>
     <p>Your tropical getaway!</p>
 </footer>
 
 <script>
-    function showRoom() {
+    function showRoom(room) {
         document.getElementById("rooms").style.display = "none";
-        document.getElementById("room-details").style.display = "block";
+        document.getElementById("deluxe-details").style.display = "none";
+        document.getElementById("vip-details").style.display = "none";
+        document.getElementById("standard-details").style.display = "none";
+
+        if (room === "deluxe") {
+            document.getElementById("deluxe-details").style.display = "block";
+        }
+
+        if (room === "vip") {
+            document.getElementById("vip-details").style.display = "block";
+        }
+
+        if (room === "standard") {
+            document.getElementById("standard-details").style.display = "block";
+        }
     }
 
     function hideRoom() {
-        document.getElementById("room-details").style.display = "none";
+        document.getElementById("deluxe-details").style.display = "none";
+        document.getElementById("vip-details").style.display = "none";
+        document.getElementById("standard-details").style.display = "none";
         document.getElementById("rooms").style.display = "block";
     }
 
-    function showPayment() {
-        document.getElementById("payment-options").style.display = "block";
+    function showPayment(paymentId) {
+        document.getElementById(paymentId).style.display = "block";
+    }
+
+    function zoomImage(image) {
+        document.getElementById("zoomed-image").src = image.src;
+        document.getElementById("image-popup").style.display = "flex";
+    }
+
+    function closeImage() {
+        document.getElementById("image-popup").style.display = "none";
     }
 </script>
 
