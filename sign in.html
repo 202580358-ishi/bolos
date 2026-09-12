@@ -2,212 +2,109 @@
 <html>
 
 <head>
-
     <title>Sign In - El Nido Haven</title>
-
     <link rel="stylesheet" href="style.css">
-
 </head>
 
 <body>
 
 <header>
-
     <div class="logo-container">
-
-        <img
-            class="logo"
-            src="logo.png"
-            alt="El Nido Haven Logo"
-        >
-
-        <div class="name">
-            EL NIDO HAVEN ❀
-        </div>
-
+        <img class="logo" src="logo.png" alt="El Nido Haven Logo">
+        <div class="name">EL NIDO HAVEN ❀</div>
     </div>
 
     <nav>
-
-        <a href="index.html">
-            Home
-        </a>
-
-        <a href="about.html">
-            About
-        </a>
-
-        <a href="sign in.html">
-            Sign In
-        </a>
-
-        <a href="contact.html">
-            Contact
-        </a>
-
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="signin.html">Sign In</a>
+        <a href="contact.html">Contact</a>
     </nav>
-
 </header>
-
 
 <section id="account">
 
-
     <div id="signin-section">
-
-        <h1>
-            ⋆｡°✩ Sign In ✩°｡⋆
-        </h1>
+        <h1>⋆｡°✩ Sign In ✩°｡⋆</h1>
 
         <div class="account-box">
 
             <form>
+                <label>Email Address</label>
+                <input type="email" placeholder="Enter your email" required>
 
-                <label>
-                    Email Address
-                </label>
+                <label>Password</label>
+                <input type="password" placeholder="Enter your password" required>
 
-                <input
-                    type="email"
-                    placeholder="Enter your email"
-                    required
-                >
-
-
-                <label>
-                    Password
-                </label>
-
-                <input
-                    type="password"
-                    placeholder="Enter your password"
-                    required
-                >
-
-
-                <button
-                    type="submit"
-                    class="submit-button"
-                >
+                <button type="submit" class="submit-button">
                     Sign In
                 </button>
-
             </form>
 
-
             <div class="account-switch">
+                <p>Don't have an account yet?</p>
 
-                <p>
-                    Don't have an account yet?
-                </p>
-
-                <button
-                    type="button"
-                    class="switch-button"
-                    onclick="showRegister()"
-                >
+                <button type="button" class="switch-button" onclick="showCreateAccount()">
                     Create an Account
                 </button>
-
             </div>
 
         </div>
-
     </div>
 
 
+    <div id="create-account-section" style="display: none;">
 
-    <div id="register-section" style="display: none;">
-
-        <h1>
-            ⋆｡°✩ Create an Account ✩°｡⋆
-        </h1>
+        <h1>⋆｡°✩ Create an Account ✩°｡⋆</h1>
 
         <div class="account-box">
 
             <form>
 
-                <label>
-                    Full Name
-                </label>
+                <label>Full Name</label>
+                <input type="text" placeholder="Enter your full name" required>
 
-                <input
-                    type="text"
-                    placeholder="Enter your full name"
-                    required
-                >
+                <label>Email Address</label>
+                <input type="email" placeholder="Enter your email" required>
 
+                <label>Contact Number</label>
+                <input type="tel" placeholder="Enter your contact number" required>
 
-                <label>
-                    Email Address
-                </label>
+                <label>Password</label>
+                <input type="password" placeholder="Create a password" required>
 
-                <input
-                    type="email"
-                    placeholder="Enter your email"
-                    required
-                >
+                <label>Confirm Password</label>
+                <input type="password" placeholder="Confirm your password" required>
 
-
-                <label>
-                    Contact Number
-                </label>
-
-                <input
-                    type="text"
-                    placeholder="Enter your contact number"
-                    required
-                >
-
-
-                <label>
-                    Password
-                </label>
-
-                <input
-                    type="password"
-                    placeholder="Create a password"
-                    required
-                >
-
-
-                <label>
-                    Confirm Password
-                </label>
-
-                <input
-                    type="password"
-                    placeholder="Confirm your password"
-                    required
-                >
-
-
-                <button
-                    type="submit"
-                    class="submit-button"
-                >
+                <button type="submit" class="submit-button">
                     Create Account
                 </button>
 
             </form>
 
-
             <div class="account-switch">
+                <p>Already have an account?</p>
 
-                <p>
-                    Already have an account?
-                </p>
-
-                <button
-                    type="button"
-                    class="switch-button"
-                    onclick="showSignIn()"
-                >
+                <button type="button" class="switch-button" onclick="showSignIn()">
                     Sign In
                 </button>
-
             </div>
 
+        </div>
+    </div>
+
+
+    <div class="payment-section">
+
+        <h1>⋆｡°✩ Mode of Payment ✩°｡⋆</h1>
+
+        <div class="account-box">
+
+            <button type="button" class="payment-button" onclick="showPayment()">
+                Select Mode of Payment
+            </button>
+
+        
         </div>
 
     </div>
@@ -216,38 +113,33 @@
 
 
 <footer>
-
-    <p>
-        EL NIDO HAVEN
-    </p>
-
-    <p>
-        Your tropical getaway!
-    </p>
-
+    <p>EL NIDO HAVEN</p>
+    <p>Your tropical getaway!</p>
 </footer>
 
 
 <script>
 
-    function showRegister() {
+function showCreateAccount() {
+    document.getElementById("signin-section").style.display = "none";
+    document.getElementById("create-account-section").style.display = "block";
+}
 
-        document.getElementById("signin-section").style.display = "none";
-        document.getElementById("register-section").style.display = "block";
+function showSignIn() {
+    document.getElementById("create-account-section").style.display = "none";
+    document.getElementById("signin-section").style.display = "block";
+}
 
-    }
+function showPayment() {
+    document.getElementById("payment-options").style.display = "block";
+}
 
-
-    function showSignIn() {
-
-        document.getElementById("register-section").style.display = "none";
-        document.getElementById("signin-section").style.display = "block";
-
-    }
+function selectPayment(method) {
+    document.getElementById("selected-payment").textContent =
+        "Selected: " + method;
+}
 
 </script>
 
-
 </body>
-
 </html>
