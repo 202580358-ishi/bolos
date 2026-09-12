@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>El Nido Haven</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <div class="logo-container">
+        <img class="logo" src="logo.png" alt="El Nido Haven Logo">
+        <div class="name">EL NIDO HAVEN ❀</div>
+    </div>
+
+    <nav>
+        <a href="home.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="register.html">Register</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
+
+<section id="deluxe-details" class="room-details-section">
+    <div class="details">
+
+        <h2>Tropical Garden Deluxe</h2>
+
+        <h3>Room Information</h3>
+
+        <div class="room-details">
+    <div class="room-detail-item"><strong>Room Type:</strong> Deluxe</div>
+    <div class="room-detail-item"><strong>Maximum Capacity:</strong> 2 PAX</div>
+    <div class="room-detail-item"><strong>Bed:</strong> King-size bed</div>
+    <div class="room-detail-item"><strong>Amenities:</strong> Air conditioning, flat-screen TV, mini-bar, balcony, beach and garden view, pool access and pool breakfast.</div>
+    <div class="room-detail-item"><strong>Price:</strong> ₱10,000 / night</div>
+</div>
+
+        <p class="room-description">
+            A cozy tropical room with a comfortable king-size bed, relaxing interiors, and a beautiful garden view.
+        </p>
+
+        <h3>Room Images</h3>
+
+        <div class="room-images">
+
+            <img src="IMG_6205.jpeg" alt="Tropical Garden Deluxe" onclick="zoomImage(this)">
+            <img src="cr 1.jpg" alt="CR Image" onclick="zoomImage(this)">
+            <img src="poolbfast.png" alt="Pool Breakfast Image" onclick="zoomImage(this)">
+            <img src="beachview.png" alt="Beach View Image" onclick="zoomImage(this)">
+            <img src="poolgardenview.png" alt="Pool and Garden View Image" onclick="zoomImage(this)">
+        </div>
+
+        <h3>Booking Schedule</h3>
+
+        <div class="booking">
+            <p>
+                <strong>Check-in:</strong>
+                <input type="date">
+            </p>
+
+            <p>
+                <strong>Check-out:</strong>
+                <input type="date">
+            </p>
+        </div>
+
+        <h3>Mode of Payment</h3>
+
+        <button class="payment-button" onclick="showPayment('deluxe-payment')">
+            Select Mode of Payment
+        </button>
+
+        <div id="deluxe-payment" class="payment-options"></div>
+
+        <br>
+
+        <a href="register.html" class="book-button">Book Now</a>
+
+        <br>
+
+        <a href="home.html" class="back-button">Back to Rooms</a>
+
+    </div>
+</section>
+
+<div id="image-popup" onclick="closeImage()">
+    <img id="zoomed-image" src="" alt="Zoomed Room Image">
+</div>
+
+<footer>
+    <p>EL NIDO HAVEN</p>
+    <p>Your tropical getaway!</p>
+</footer>
+
+<script>
+function showPayment(paymentId) {
+    document.getElementById(paymentId).style.display = "block";
+}
+
+function zoomImage(image) {
+    document.getElementById("zoomed-image").src = image.src;
+    document.getElementById("image-popup").style.display = "flex";
+}
+
+
+</script>
+
+</body>
+</html>
