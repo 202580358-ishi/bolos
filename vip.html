@@ -21,35 +21,36 @@
     </nav>
 </header>
 
-<section id="deluxe-details" class="room-details-section">
+<section id="vip-details" class="room-details-section">
     <div class="details">
 
-        <h2>Tropical Garden Deluxe</h2>
+        <h2>VIP Suite</h2>
 
         <h3>Room Information</h3>
 
         <div class="room-details">
-    <div class="room-detail-item"><strong>Room Type:</strong> Deluxe</div>
-    <div class="room-detail-item"><strong>Maximum Capacity:</strong> 2 PAX</div>
+    <div class="room-detail-item"><strong>Room Type:</strong> VIP Suite</div>
+    <div class="room-detail-item"><strong>Maximum Capacity:</strong> 4 PAX</div>
     <div class="room-detail-item"><strong>Bed:</strong> King-size bed</div>
-    <div class="room-detail-item"><strong>Amenities:</strong> Air conditioning, flat-screen TV, mini-bar, balcony, beach and garden view, pool access and pool breakfast.</div>
-    <div class="room-detail-item"><strong>Price:</strong> ₱10,000 / night</div>
+    <div class="room-detail-item"><strong>Amenities:</strong> Air conditioning, flat-screen TV,  private balcony, beachfront view, pool access, and complimentary breakfast.</div>
+    <div class="room-detail-item"><strong>Price:</strong> ₱20,000 / night</div>
 </div>
 
         <p class="room-description">
-            A cozy tropical room with a comfortable king-size bed, relaxing interiors, and a beautiful garden view.
+            A spacious and elegant suite with a king-size bed, private balcony, and beautiful beachfront view.
         </p>
 
         <h3>Room Images</h3>
 
-        <div class="room-images">
+       <div class="room-images">
 
-            <img src="IMG_6205.jpeg" alt="Tropical Garden Deluxe" onclick ="zoomImage(this)">
-            <img src="cr 1.jpg" alt="CR Image" onclick ="zoomImage(this)">
-            <img src="poolbfast.png" alt="Pool Breakfast Image"onclick ="zoomImage(this)">
-            <img src="beachview.png" alt="Beach View Image" onclick ="zoomImage(this)">
-            <img src="poolgardenview.png" alt="Pool and Garden View Image" onclick ="zoomImage(this)">
-        </div>
+       <img src="4paxrm.png" alt="VIP Suite" onclick="zoomImage(this)">
+       <img src="cr2.jpg" alt="CR Image" onclick="zoomImage(this)">
+       <img src="poolbfast.png" alt="Pool Breakfast Image" onclick="zoomImage(this)">
+       <img src="beachview.png" alt="Beach View Image" onclick="zoomImage(this)">
+       <img src="poolgardenview.png" alt="Pool and Garden View Image" onclick="zoomImage(this)">
+
+      </div>
 
         <h3>Booking Schedule</h3>
 
@@ -65,7 +66,9 @@
             </p>
         </div>
 
-        <h3>Mode of Payment</h3>
+        <h3>Mode of Payment</h3> 
+      
+
 
         <button class="payment-button" onclick="showPayment('deluxe-payment')">
             Select Mode of Payment
@@ -92,6 +95,7 @@
     <p>EL NIDO HAVEN</p>
     <p>Your tropical getaway!</p>
 </footer>
+
 <script>
 function zoomImage(image) {
     document.getElementById("zoomed-image").src = image.src;
@@ -102,6 +106,9 @@ function closeImage() {
     document.getElementById("image-popup").style.display = "none";
 }
 </script>
+
+
+
 
 </body>
 </html>
