@@ -307,3 +307,144 @@ border-bottom: none;
 .room-detail-item strong {
 color: #f1357d;
 }
+
+
+#signin {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+#signin h1 {
+    color: #f1357d;
+    font-size: 35px;
+}
+
+.signin-box {
+    width: 400px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(241, 53, 125, 0.2);
+    text-align: left;
+}
+
+.signin-box label {
+    color: #f1357d;
+    font-weight: bold;
+}
+
+.signin-box input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    border: 1px solid #FFD1E1;
+    border-radius: 8px;
+}
+
+.submit-button {
+    display: block;
+    background-color: #f1357d;
+    color: white;
+    padding: 10px 22px;
+    border: none;
+    border-radius: 20px;
+    font-weight: bold;
+    margin: 10px auto 0;
+    cursor: pointer;
+}
+
+.register-link {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.register-link a {
+    color: #FD821A;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.register-link a:hover {
+    text-decoration: underline;
+}
+
+/* ACCOUNT PAGE */
+
+#account {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+#account h1 {
+    color: #f1357d;
+    font-size: 35px;
+}
+
+.account-box {
+    width: 400px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(241, 53, 125, 0.2);
+    text-align: left;
+}
+
+.account-box label {
+    color: #f1357d;
+    font-weight: bold;
+}
+
+.account-box input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    border: 1px solid #FFD1E1;
+    border-radius: 8px;
+    font-family: Georgia, serif;
+}
+
+.submit-button {
+    display: block;
+    background-color: #f1357d;
+    color: white;
+    padding: 10px 22px;
+    border: none;
+    border-radius: 20px;
+    font-weight: bold;
+    margin: 10px auto 0;
+    cursor: pointer;
+    font-family: Georgia, serif;
+}
+
+.submit-button:hover {
+    background-color: #d92f6e;
+}
+
+.account-switch {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.account-switch p {
+    margin-bottom: 8px;
+}
+
+.switch-button {
+    background: none;
+    border: none;
+    color: #FD821A;
+    font-weight: bold;
+    font-family: Georgia, serif;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.switch-button:hover {
+    text-decoration: underline;
+}
