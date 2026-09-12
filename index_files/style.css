@@ -1,0 +1,543 @@
+body {
+margin: 0;
+background: #FFF3F7;
+font-family: Georgia, serif;
+color: #333;
+}
+
+header {
+background: #FFD1E1;
+padding: 10px 25px;
+display: flex;
+align-items: center;
+justify-content: space-between;
+}
+
+.logo-container {
+display: flex;
+align-items: center;
+}
+
+.logo {
+width: 150px;
+height: 150px;
+object-fit: contain;
+margin-right: 10px;
+}
+
+.name {
+font-size: 28px;
+font-weight: bold;
+color: #f1357d;
+flex: 1;
+}
+
+nav {
+display: flex;
+gap: 25px;
+}
+
+nav a {
+text-decoration: none;
+color: #FD821A;
+font-weight: bold;
+font-size: 17px;
+}
+
+nav a:hover {
+color: #f1357d;
+}
+
+#home {
+text-align: center;
+padding: 50px 20px;
+}
+
+#home h1 {
+color: #f1357d;
+font-size: 40px;
+margin-bottom: 15px;
+}
+
+#home h1 span {
+color: #FF8C42;
+}
+
+#rooms {
+padding: 30px 20px 60px;
+text-align: center;
+background: #FFF3F7;
+color: #f1357d;
+}
+
+#rooms h2 {
+font-size: 32px;
+margin-bottom: 30px;
+}
+
+.room-container {
+display: flex;
+justify-content: center;
+gap: 25px;
+flex-wrap: wrap;
+}
+
+.room-card {
+width: 320px;
+background: white;
+border-radius: 15px;
+overflow: hidden;
+box-shadow: 0 4px 12px rgba(0,0,0,.15);
+cursor: pointer;
+transition: transform .2s;
+}
+
+.room-card:hover {
+transform: translateY(-5px);
+}
+
+.room-card img {
+width: 100%;
+height: 190px;
+object-fit: cover;
+}
+
+.room-info {
+padding: 18px;
+}
+
+.room-info h3 {
+color: #f1357d;
+margin-top: 0;
+}
+
+.room-info p {
+color: #FF8C42;
+font-size: 15px;
+line-height: 1.5;
+}
+
+.price {
+color: #FF8C42;
+font-size: 18px;
+font-weight: bold;
+margin: 15px 0;
+}
+
+.book-button {
+display: inline-block;
+background: #f1357d;
+color: white;
+padding: 10px 18px;
+border-radius: 20px;
+text-decoration: none;
+font-weight: bold;
+}
+
+.book-button:hover {
+background: #d92368;
+}
+
+.room-details-section {
+padding: 40px 20px 60px;
+background: #FFF3F7;
+}
+
+.details {
+max-width: 1000px;
+margin: auto;
+text-align: center;
+}
+
+.details h2 {
+color: #f1357d;
+font-size: 35px;
+margin-bottom: 25px;
+}
+
+.details h3 {
+color: #FF8C42;
+margin-top: 20px;
+}
+
+.room-details {
+background: white;
+padding: 25px;
+border-radius: 15px;
+box-shadow: 0 4px 12px rgba(0,0,0,.12);
+margin-bottom: 30px;
+}
+
+.room-detail-row {
+display: flex;
+justify-content: center;
+gap: 50px;
+flex-wrap: wrap;
+margin-bottom: 20px;
+}
+
+.room-detail-row div {
+min-width: 180px;
+}
+
+.room-detail-row strong {
+color: #f1357d;
+}
+
+.room-description {
+color: #555;
+line-height: 1.7;
+max-width: 800px;
+margin: 20px auto;
+}
+
+.room-images {
+display: flex;
+justify-content: center;
+gap: 15px;
+flex-wrap: wrap;
+margin: 25px 0;
+}
+
+.room-images img {
+width: 220px;
+height: 160px;
+object-fit: cover;
+border-radius: 12px;
+cursor: pointer;
+box-shadow: 0 3px 8px rgba(0,0,0,.15);
+}
+
+.booking {
+background: #fff;
+padding: 25px;
+border-radius: 15px;
+box-shadow: 0 4px 12px rgba(0,0,0,.12);
+margin-top: 25px;
+}
+
+.booking p {
+color: #f1357d;
+font-weight: bold;
+}
+
+.booking input {
+padding: 10px;
+border: 1px solid #ddd;
+border-radius: 8px;
+margin: 5px;
+font-family: Georgia, serif;
+}
+
+.payment-button {
+background: #FF8C42;
+color: white;
+border: none;
+padding: 10px 18px;
+border-radius: 20px;
+font-weight: bold;
+cursor: pointer;
+margin-top: 10px;
+}
+
+.payment-options {
+display: none;
+margin-top: 15px;
+padding: 15px;
+background: #FFF3F7;
+border-radius: 10px;
+color: #555;
+}
+
+.back-button {
+display: inline-block;
+background: #f1357d;
+color: white;
+padding: 10px 18px;
+border-radius: 20px;
+text-decoration: none;
+font-weight: bold;
+margin-top: 20px;
+}
+
+#image-popup {
+display: none;
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: rgba(0,0,0,.8);
+justify-content: center;
+align-items: center;
+z-index: 999;
+cursor: pointer;
+}
+
+#zoomed-image {
+max-width: 90%;
+max-height: 90%;
+border-radius: 15px;
+}
+
+footer {
+background: #FFD1E1;
+text-align: center;
+padding: 25px;
+color: #f1357d;
+}
+
+footer p {
+color: #FF8C42;
+margin-bottom: 0;
+}
+
+.room-detail-item {
+padding: 12px 0;
+border-bottom: 1px solid #ddd;
+text-align: left;
+color: #555;
+line-height: 1.6;
+}
+
+.room-detail-item:last-child {
+border-bottom: none;
+}
+
+.room-detail-item strong {
+color: #f1357d;
+}
+
+
+#signin {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+#signin h1 {
+    color: #f1357d;
+    font-size: 35px;
+}
+
+.signin-box {
+    width: 400px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(241, 53, 125, 0.2);
+    text-align: left;
+}
+
+.signin-box label {
+    color: #f1357d;
+    font-weight: bold;
+}
+
+.signin-box input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    border: 1px solid #FFD1E1;
+    border-radius: 8px;
+}
+
+.submit-button {
+    display: block;
+    background-color: #f1357d;
+    color: white;
+    padding: 10px 22px;
+    border: none;
+    border-radius: 20px;
+    font-weight: bold;
+    margin: 10px auto 0;
+    cursor: pointer;
+}
+
+.register-link {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.register-link a {
+    color: #FD821A;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.register-link a:hover {
+    text-decoration: underline;
+}
+
+/* ACCOUNT PAGE */
+
+#account {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+#account h1 {
+    color: #f1357d;
+    font-size: 35px;
+}
+
+.account-box {
+    width: 400px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(241, 53, 125, 0.2);
+    text-align: left;
+}
+
+.account-box label {
+    color: #f1357d;
+    font-weight: bold;
+}
+
+.account-box input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    border: 1px solid #FFD1E1;
+    border-radius: 8px;
+    font-family: Georgia, serif;
+}
+
+.submit-button {
+    display: block;
+    background-color: #f1357d;
+    color: white;
+    padding: 10px 22px;
+    border: none;
+    border-radius: 20px;
+    font-weight: bold;
+    margin: 10px auto 0;
+    cursor: pointer;
+    font-family: Georgia, serif;
+}
+
+.submit-button:hover {
+    background-color: #d92f6e;
+}
+
+.account-switch {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.account-switch p {
+    margin-bottom: 8px;
+}
+
+.switch-button {
+    background: none;
+    border: none;
+    color: #FD821A;
+    font-weight: bold;
+    font-family: Georgia, serif;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.switch-button:hover {
+    text-decoration: underline;
+}
+
+/* LANDING PAGE */
+
+.hero {
+    height: 100vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hotel-photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.promotion {
+    position: relative;
+    width: 650px;
+    padding: 20px 30px;
+    background-color: rgba(255, 243, 247, 0.72);
+    border-radius: 18px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.20);
+    text-align: center;
+    z-index: 1;
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 5px;
+}
+
+.landing-logo {
+    width: 75px;
+    height: 75px;
+    object-fit: contain;
+}
+
+.promotion h1 {
+    color: #f1357d;
+    font-size: 36px;
+    margin: 0;
+}
+
+.promotion h2 {
+    color: #FF8C42;
+    font-size: 21px;
+    margin: 8px 0 15px;
+}
+
+.promotion p {
+    color: #444;
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 8px 0;
+}
+
+.offer {
+    color: #f1357d !important;
+    font-weight: bold;
+    font-size: 18px !important;
+    margin-top: 15px !important;
+}
+
+.room {
+    color: #555;
+    margin-top: 5px !important;
+}
+
+.price {
+    color: #FD821A;
+    font-weight: bold;
+}
+
+.button {
+    display: inline-block;
+    background-color: #f1357d;
+    color: white;
+    padding: 11px 28px;
+    margin-top: 12px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 20px;
+}
+
+.button:hover {
+    background-color: #FD821A;
+}
