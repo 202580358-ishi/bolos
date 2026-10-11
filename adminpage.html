@@ -1,8 +1,8 @@
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
+    
     <title>Admin Dashboard - El Nido Haven</title>
 
     <style>
@@ -16,20 +16,20 @@
         header {
             background: #FFD1E1;
             padding: 15px 30px;
-        }
-
-        .brand {
             display: flex;
             align-items: center;
+            gap: 15px;
         }
 
         .logo {
             width: 70px;
-            margin-right: 15px;
+        }
+
+        .name, h1, h2 {
+            color: #f1357d;
         }
 
         .name {
-            color: #f1357d;
             font-size: 25px;
             font-weight: bold;
         }
@@ -44,10 +44,6 @@
             margin: 30px auto;
         }
 
-        h1, h2 {
-            color: #f1357d;
-        }
-
         .cards {
             display: flex;
             gap: 20px;
@@ -57,7 +53,7 @@
             background: white;
             padding: 20px;
             border-radius: 15px;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
         }
 
         .card {
@@ -69,29 +65,47 @@
             font-size: 30px;
         }
 
+        button {
+            background: #FD821A;
+            color: white;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 3px;
+        }
+
+        button:hover {
+            background: #f1357d;
+        }
+
         .calendar {
             display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            gap: 8px;
+            grid-template-columns: repeat(7, minmax(0, 1fr));
+            gap: 5px;
         }
 
         .day-name {
             text-align: center;
             color: #f1357d;
             font-weight: bold;
-            padding: 10px;
-        }
-
-        #calendarDays {
-            display: contents;
+            padding: 8px 0;
         }
 
         .day {
-            padding: 10px;
-            min-height: 40px;
+            padding: 8px 3px;
+            min-height: 75px;
             border: 1px solid #f3dce5;
-            border-radius: 10px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 13px;
             cursor: pointer;
+            overflow-wrap: anywhere;
+        }
+
+        .day:hover, .selected {
+            background: #FFD1E1;
+            border-color: #f1357d;
         }
 
         .available {
@@ -104,37 +118,38 @@
             font-weight: bold;
         }
 
-        .selected {
-            border: 2px solid #f1357d;
+        .room-name {
+            display: block;
+            margin-top: 4px;
+            font-size: 11px;
         }
 
         .schedule {
             margin-top: 15px;
             padding: 15px;
             background: #FFF3F7;
+            border-radius: 10px;
+        }
+
+        .table-container {
+            overflow-x: auto;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
+            min-width: 650px;
         }
 
         th {
             background: #FFD1E1;
             color: #f1357d;
-            padding: 10px;
         }
 
-        td {
+        th, td {
             padding: 10px;
+            text-align: left;
             border-bottom: 1px solid #ddd;
-        }
-
-        button {
-            padding: 7px 12px;
-            border: 0;
-            border-radius: 10px;
-            cursor: pointer;
         }
 
         footer {
@@ -142,28 +157,51 @@
             padding: 20px;
             text-align: center;
         }
+
+        @media (max-width: 650px) {
+            .cards {
+                flex-direction: column;
+                gap: 0;
+            }
+
+            main {
+                width: 94%;
+            }
+
+            header {
+                padding: 12px;
+            }
+
+            .name {
+                font-size: 20px;
+            }
+
+            .day {
+                font-size: 11px;
+                padding: 6px 1px;
+            }
+
+            .room-name {
+                font-size: 10px;
+            }
+        }
     </style>
 </head>
 
 <body>
 
 <header>
-    <div class="brand">
-        <img src="images/logo.png" class="logo">
-
-        <div>
-            <div class="name">EL NIDO HAVEN</div>
-            <div class="admin">ADMIN DASHBOARD</div>
-        </div>
+    <img src="images/logo.png" class="logo" alt="El Nido Haven Logo">
+    <div>
+        <div class="name">EL NIDO HAVEN</div>
+        <div class="admin">ADMIN DASHBOARD</div>
     </div>
 </header>
 
 <main>
-
     <h1>Dashboard</h1>
 
     <div class="cards">
-
         <div class="card">
             <h3>Total Rooms</h3>
             <strong>3</strong>
@@ -172,29 +210,26 @@
 
         <div class="card">
             <h3>Available</h3>
-            <strong>1</strong>
-            <p>Vacant room</p>
+            <strong id="available">1</strong>
+            <p>Vacant rooms</p>
         </div>
 
         <div class="card">
             <h3>Booked</h3>
-            <strong>2</strong>
+            <strong id="booked">2</strong>
             <p>Currently booked</p>
         </div>
-
     </div>
 
     <div class="section">
+        <h2>Booking Calendar</h2>
 
-        <h2 id="monthYear"></h2>
+        <button onclick="changeMonth(-1)">Previous</button>
+        <button onclick="changeMonth(1)">Next</button>
 
-        <button onclick="previousMonth()">Previous</button>
-        <button onclick="nextMonth()">Next</button>
-
-        <br><br>
+        <h3 id="monthYear"></h3>
 
         <div class="calendar">
-
             <div class="day-name">Sun</div>
             <div class="day-name">Mon</div>
             <div class="day-name">Tue</div>
@@ -202,74 +237,76 @@
             <div class="day-name">Thu</div>
             <div class="day-name">Fri</div>
             <div class="day-name">Sat</div>
-
-            <div id="calendarDays"></div>
-
+            <div id="calendarDays" style="display: contents;"></div>
         </div>
 
         <div class="schedule">
-
             <h3 id="selectedDate">Select a date</h3>
-
-            <div id="selectedBookings">
-                Click a date to view the booking.
-            </div>
-
+            <div id="bookingDetails">Click a date to view room bookings.</div>
         </div>
-
     </div>
 
     <div class="section">
-
         <h2>Recent Bookings</h2>
 
-        <table>
+        <div class="table-container">
+            <table id="bookingTable">
+                <thead>
+                    <tr>
+                        <th>Guest</th>
+                        <th>Room</th>
+                        <th>Check-in</th>
+                        <th>Check-out</th>
+                        <th>Payment</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
 
-            <tr>
-                <th>Guest</th>
-                <th>Room</th>
-                <th>Check-in</th>
-                <th>Check-out</th>
-                <th>Payment</th>
-                <th>Status</th>
-                <th>Action</th>
-            </tr>
+                <tbody>
+                    <tr>
+                        <td>Angela Reynoso</td>
+                        <td>Tropical Garden Deluxe</td>
+                        <td>Sept. 15, 2026</td>
+                        <td>Sept. 18, 2026</td>
+                        <td>Paid (Card)</td>
+                        <td class="status booked">Booked</td>
+                        <td>
+                            <button onclick="updateBooking(this, 'Confirmed')">Confirm</button>
+                            <button onclick="updateBooking(this, 'Cancelled')">Cancel</button>
+                        </td>
+                    </tr>
 
-            <tr>
-                <td>Angela Reynoso</td>
-                <td>Tropical Garden Deluxe</td>
-                <td>Sept. 15</td>
-                <td>Sept. 18</td>
-                <td>Paid (Card)</td>
-                <td class="booked">Booked</td>
-                <td>
-                    <button onclick="confirmBooking(this)">Confirm</button>
-                    <button onclick="cancelBooking(this)">Cancel</button>
-                </td>
-            </tr>
+                    <tr>
+                        <td>Lovely Caguiwa</td>
+                        <td>VIP Suite</td>
+                        <td>Sept. 20, 2026</td>
+                        <td>Sept. 23, 2026</td>
+                        <td>Paid (GCash)</td>
+                        <td class="status booked">Booked</td>
+                        <td>
+                            <button onclick="updateBooking(this, 'Confirmed')">Confirm</button>
+                            <button onclick="updateBooking(this, 'Cancelled')">Cancel</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
-            <tr>
-                <td>Lovely Caguiwa</td>
-                <td>VIP Beachfront Suite</td>
-                <td>Sept. 20</td>
-                <td>Sept. 23</td>
-                <td>Paid (GCash)</td>
-                <td class="booked">Booked</td>
-                <td>
-                    <button onclick="confirmBooking(this)">Confirm</button>
-                    <button onclick="cancelBooking(this)">Cancel</button>
-                </td>
-            </tr>
+        <h3>Room Availability</h3>
 
-        </table>
-
-        <p>
-            <strong>Cozy Garden Standard:</strong>
-            <span class="available">Vacant</span>
+        <p><strong>Tropical Garden Deluxe:</strong>
+            <span id="deluxeStatus" class="booked">BOOKED</span>
         </p>
 
-    </div>
+        <p><strong>VIP Suite:</strong>
+            <span id="vipStatus" class="booked">BOOKED</span>
+        </p>
 
+        <p><strong>Standard Room:</strong>
+            <span class="available">VACANT</span>
+        </p>
+    </div>
 </main>
 
 <footer>
@@ -278,148 +315,181 @@
 </footer>
 
 <script>
+   
+    var bookings = [
+        ["Angela Reynoso", "Tropical Garden Deluxe", "2026-09-15", "2026-09-18", "Booked"],
+        ["Lovely Caguiwa", "VIP Suite", "2026-09-20", "2026-09-23", "Booked"]
+    ];
 
-var bookings = [
-    ["Tropical Garden Deluxe", "2026-09-15", "2026-09-18", "Angela Reynoso"],
-    ["VIP Beachfront Suite", "2026-09-20", "2026-09-23", "Lovely Caguiwa"]
-];
+    var date = new Date();
+    var selectedBox = null;
 
-var date = new Date(2026, 8, 13);
+    function showCalendar() {
+        var year = date.getFullYear();
+        var month = date.getMonth();
 
-function showCalendar() {
+        document.getElementById("monthYear").textContent =
+            date.toLocaleString("en-US", { month: "long" }) + " " + year;
 
-    var year = date.getFullYear();
-    var month = date.getMonth();
+        var calendar = document.getElementById("calendarDays");
+        calendar.innerHTML = "";
 
-    document.getElementById("monthYear").innerHTML =
-        (month + 1) + " / " + year;
+        var firstDay = new Date(year, month, 1).getDay();
+        var totalDays = new Date(year, month + 1, 0).getDate();
 
-    var calendar = document.getElementById("calendarDays");
-
-    calendar.innerHTML = "";
-
-    var firstDay = new Date(year, month, 1).getDay();
-    var totalDays = new Date(year, month + 1, 0).getDate();
-
-    for (var i = 0; i < firstDay; i++) {
-        calendar.innerHTML += "<div></div>";
-    }
-
-    for (var day = 1; day <= totalDays; day++) {
-
-        var monthNumber = month + 1;
-
-        if (monthNumber < 10) {
-            monthNumber = "0" + monthNumber;
+        for (var i = 0; i < firstDay; i++) {
+            calendar.appendChild(document.createElement("div"));
         }
 
-        var dayNumber = day;
+        for (var day = 1; day <= totalDays; day++) {
+            var selected = year + "-" +
+                String(month + 1).padStart(2, "0") + "-" +
+                String(day).padStart(2, "0");
 
-        if (dayNumber < 10) {
-            dayNumber = "0" + dayNumber;
-        }
+            var box = document.createElement("div");
+            box.className = "day";
+            box.setAttribute("data-date", selected);
 
-        var today = year + "-" + monthNumber + "-" + dayNumber;
+            var number = document.createElement("strong");
+            number.textContent = day;
+            box.appendChild(number);
 
-        var box = document.createElement("div");
+            var hasBooking = false;
 
-        box.className = "day";
+            for (var i = 0; i < bookings.length; i++) {
+                if (bookings[i][4] !== "Cancelled" &&
+                    selected >= bookings[i][2] &&
+                    selected < bookings[i][3]) {
 
-        var status = "Vacant";
+                    hasBooking = true;
+                    var status = document.createElement("div");
+                    status.className = "booked";
+                    status.textContent = "BOOKED";
+                    box.appendChild(status);
 
-        for (var i = 0; i < bookings.length; i++) {
-
-            if (today >= bookings[i][1] && today <= bookings[i][2]) {
-                status = "Booked";
+                    var room = document.createElement("span");
+                    room.className = "room-name";
+                    room.textContent = bookings[i][1];
+                    box.appendChild(room);
+                }
+            }
+            if (!hasBooking) {
+                var vacant = document.createElement("div");
+                vacant.className = "available";
+                vacant.textContent = "VACANT";
+                box.appendChild(vacant);
             }
 
-        }
+            box.onclick = function () {
+                if (selectedBox) {
+                    selectedBox.classList.remove("selected");
+                }
 
-        if (status == "Booked") {
-            box.innerHTML =
-                day + "<br><span class='booked'>Booked</span>";
-        } else {
-            box.innerHTML =
-                day + "<br><span class='available'>Vacant</span>";
-        }
+                selectedBox = this;
+                this.classList.add("selected");
+                showSchedule(this.getAttribute("data-date"));
+            };
 
-        box.setAttribute("data-date", today);
-
-        box.onclick = function() {
-            showSchedule(
-                this.getAttribute("data-date"),
-                this
-            );
-        };
-
-        calendar.appendChild(box);
-    }
-}
-
-function showSchedule(selected, box) {
-
-    box.className = "day selected";
-
-    document.getElementById("selectedDate").innerHTML = selected;
-
-    var text = "";
-
-    for (var i = 0; i < bookings.length; i++) {
-
-        if (selected >= bookings[i][1] &&
-            selected <= bookings[i][2]) {
-
-            text +=
-                "<p><strong>" + bookings[i][0] +
-                "</strong><br>" +
-                "Guest: " + bookings[i][3] +
-                "<br>Booked</p>";
+            calendar.appendChild(box);
         }
     }
 
-    if (text == "") {
-        text =
-            "<p class='available'>" +
-            "No bookings. Room is available." +
-            "</p>";
+    function showSchedule(selected) {
+        document.getElementById("selectedDate").textContent =
+            "Bookings for " + selected;
+
+        var details = document.getElementById("bookingDetails");
+        details.innerHTML = "";
+        var found = false;
+
+        for (var i = 0; i < bookings.length; i++) {
+            if (bookings[i][4] !== "Cancelled" &&
+                selected >= bookings[i][2] &&
+                selected < bookings[i][3]) {
+
+                details.innerHTML +=
+                    "<p><strong>" + bookings[i][1] + "</strong><br>" +
+                    "Guest: " + bookings[i][0] + "<br>" +
+                    "Status: " + bookings[i][4] + "</p>";
+
+                found = true;
+            }
+        }
+
+        if (!found) {
+            details.innerHTML =
+                "<p class='available'>VACANT — No room bookings for this date.</p>";
+        }
+    }
+ 
+    function changeMonth(amount) {
+        date.setDate(1);
+        date.setMonth(date.getMonth() + amount);
+        selectedBox = null;
+        showCalendar();
     }
 
-    document.getElementById("selectedBookings").innerHTML = text;
-}
+    function updateBooking(button, status) {
+        var row = button.closest("tr");
+        var index = row.rowIndex - 1;
 
-function previousMonth() {
-    date.setMonth(date.getMonth() - 1);
+        if (bookings[index][4] === "Cancelled") {
+            alert("This booking has already been cancelled.");
+            return;
+        }
+
+        if (status === "Cancelled" &&
+            !confirm("Are you sure you want to cancel this booking?")) {
+            return;
+        }
+
+        bookings[index][4] = status;
+
+        row.querySelector(".status").textContent = status;
+        row.querySelector(".status").className =
+            status === "Cancelled" ? "status available" :
+            status === "Confirmed" ? "status available" : "status booked";
+
+        var room = bookings[index][1];
+        var roomStatus = "VACANT";
+
+        for (var i = 0; i < bookings.length; i++) {
+            if (bookings[i][1] === room && bookings[i][4] !== "Cancelled") {
+                roomStatus = bookings[i][4].toUpperCase();
+            }
+        }
+
+        if (room === "Tropical Garden Deluxe") {
+            document.getElementById("deluxeStatus").textContent = roomStatus;
+            document.getElementById("deluxeStatus").className =
+                roomStatus === "VACANT" ? "available" : "booked";
+        }
+
+        if (room === "VIP Suite") {
+            document.getElementById("vipStatus").textContent = roomStatus;
+            document.getElementById("vipStatus").className =
+                roomStatus === "VACANT" ? "available" : "booked";
+        }
+
+        var activeRooms = [];
+
+        for (var i = 0; i < bookings.length; i++) {
+            if (bookings[i][4] !== "Cancelled" &&
+                !activeRooms.includes(bookings[i][1])) {
+                activeRooms.push(bookings[i][1]);
+            }
+        }
+
+        document.getElementById("booked").textContent = activeRooms.length;
+        document.getElementById("available").textContent = 3 - activeRooms.length;
+
+        showCalendar();
+        alert("Booking " + status.toLowerCase() + "!");
+    }
+
     showCalendar();
-}
-
-function nextMonth() {
-    date.setMonth(date.getMonth() + 1);
-    showCalendar();
-}
-
-function confirmBooking(button) {
-
-    var row = button.parentElement.parentElement;
-
-    row.cells[5].innerHTML = "Confirmed";
-    row.cells[5].className = "available";
-
-    button.style.display = "none";
-}
-
-function cancelBooking(button) {
-
-    var row = button.parentElement.parentElement;
-
-    row.cells[5].innerHTML = "Cancelled";
-    row.cells[5].className = "booked";
-
-    button.parentElement.innerHTML = "Cancelled";
-}
-
-showCalendar();
-
 </script>
 
 </body>
 </html>
+
