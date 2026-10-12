@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en"></html>
 <head>
@@ -283,20 +282,20 @@
     function showCalendar() {
         var year = date.getFullYear();
         var month = date.getMonth();
-
+         //shows month and year in the calendar header
         document.getElementById("monthYear").textContent =
             date.toLocaleString("en-US", { month: "long" }) + " " + year;
 
         var calendar = document.getElementById("calendarDays");
         calendar.innerHTML = "";
-
+           //gets the day/date 
         var firstDay = new Date(year, month, 1).getDay();
         var totalDays = new Date(year, month + 1, 0).getDate();
 
         for (var i = 0; i < firstDay; i++) {
             calendar.appendChild(document.createElement("div"));
         }
-
+//inaayos yung date
         for (var day = 1; day <= totalDays; day++) {
             var dayDate = year + "-" +
                 String(month + 1).padStart(2, "0") + "-" +
@@ -367,7 +366,7 @@
         var details = document.getElementById("bookingDetails");
         details.innerHTML = "";
         var found = false;
-
+//pang check ng bookings and booking conditions like if vacant or booked.
         for (var i = 0; i < bookings.length; i++) {
             if (bookings[i][4] !== "Cancelled" &&
                 selected >= bookings[i][2] &&
