@@ -43,7 +43,7 @@
             <span class="price">₱4,500 / night</span>
         </p>
 
-        <a href="home.html" class="button">
+        <a href="home.php" class="button">
             Explore El Nido Haven
         </a>
 

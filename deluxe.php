@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+// need to log in first
+if (!isset($_SESSION["user_id"])) {
+    header("Location: signin.php");
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en"></html>
 <head>
@@ -15,10 +24,10 @@
     </div>
 
     <nav>
-        <a href="home.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="register.html">Register</a>
-        <a href="contact.html">Contact</a>
+        <a href="home.php">Home</a>
+        <a href="about.php">About</a>
+        <a href="contact.php">Contact</a>
+        <a href="logout.php">Logout</a>
     </nav>
 </header>
 
@@ -32,11 +41,11 @@
         <h3>Room Information</h3>
 
         <div class="room-details">
-            <div class="room-detail-item"><strong>Room Type:</strong> Deluxe</div>
+            <div class="room-detail-item"><strong>Room Type:</strong> Tropical Garden Deluxe</div>
             <div class="room-detail-item"><strong>Maximum Capacity:</strong> 2 PAX</div>
             <div class="room-detail-item"><strong>Bed:</strong> King-size bed</div>
             <div class="room-detail-item"><strong>Amenities:</strong> Air conditioning, flat-screen TV, mini-bar, balcony, beach and garden view, pool access and pool breakfast.</div>
-            <div class="room-detail-item"><strong>Price:</strong> ₱10,000 / night</div>
+            <div class="room-detail-item"><strong>Price:</strong> ₱12,000 / night</div>
         </div>
 
         <p class="room-description">
@@ -55,24 +64,29 @@
 
         <h3>Booking Schedule</h3>
 
-        <div class="booking">
+        <form action="book.php" method="POST">
+            <input type="hidden" name="room_id" value="1">
 
-            <p>
-                <strong>Check-in:</strong>
-                <input type="date">
-            </p>
+            <div class="booking">
 
-            <p>
-                <strong>Check-out:</strong>
-                <input type="date">
-            </p>
+                <p>
+                    <strong>Check-in:</strong>
+                    <input type="date" name="check_in" required>
+                </p>
 
-        </div>
+                <p>
+                    <strong>Check-out:</strong>
+                    <input type="date" name="check_out" required>
+                </p>
 
+            </div>
 
-        <a href="sign in.html" class="book-button">Book Now</a>
+            <br>
+
+            <button type="submit" class="book-button">Book Now</button>
+        </form>
         <br>
-        <a href="home.html" class="back-button">Back to Rooms</a>
+        <a href="home.php" class="back-button">Back to Rooms</a>
 
     </div>
 

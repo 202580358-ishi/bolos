@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 
@@ -103,23 +106,17 @@
     </div>
 
     <nav>
-
-        <a href="index.html">
-            Home
-        </a>
-
-        <a href="about.html">
-            About
-        </a>
-
-        <a href="sign in.html">
-            Sign In
-        </a>
-
-        <a href="contact.html">
-            Contact
-        </a>
-
+        <?php if (isset($_SESSION["user_id"])) { ?>
+            <a href="home.php">Home</a>
+            <a href="about.php">About</a>
+            <a href="contact.php">Contact</a>
+            <a href="logout.php">Logout</a>
+        <?php } else { ?>
+            <a href="index.php">Home</a>
+            <a href="about.php">About</a>
+            <a href="signin.php">Sign In</a>
+            <a href="contact.php">Contact</a>
+        <?php } ?>
     </nav>
 
 </header>

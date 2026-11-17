@@ -140,6 +140,10 @@ padding: 10px 18px;
 border-radius: 20px;
 text-decoration: none;
 font-weight: bold;
+border: none;
+cursor: pointer;
+font-size: 16px;
+font-family: inherit;
 }
 
 .book-button:hover {
